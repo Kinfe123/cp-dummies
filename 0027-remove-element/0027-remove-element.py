@@ -5,17 +5,13 @@ class Solution(object):
         :type val: int
         :rtype: int
         """
-        
-        element_tobe = []
-        for i in range(len(nums)):
-            if nums[i] == val:
-              
-                element_tobe.append(nums[i])
-        for i in element_tobe:
-            nums.remove(i)
-            
+        l , r = 0 , len(nums) -1 
+       
+        while l <= r:
 
-
-    
-        return len(nums)
-        
+            if nums[l] == val:
+                nums[l] , nums[r] , r = nums[r] , nums[l] , r-1
+            else:
+                l+=1
+           
+        return l
