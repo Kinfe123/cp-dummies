@@ -3,5 +3,22 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        nums1[:m+n] = sorted(nums1[:m] + nums2) #nums2 
+        m_index  , n_index , mn_index = m - 1 , n - 1 , m+n-1
+        
+        while n_index >= 0:
+            if m_index >= 0 and nums1[m_index] > nums2[n_index]:
+                nums1[mn_index] = nums1[m_index]
+                m_index-=1
+            else:
+                nums1[mn_index] = nums2[n_index]
+                n_index-=1
+            mn_index-=1
+            
+                
+                
+        
+        
+        
+        
+        
      
