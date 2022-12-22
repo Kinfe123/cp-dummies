@@ -1,16 +1,27 @@
-class Solution(object):
-    def numIdenticalPairs(self, nums):
-        counter = 0
-        for i in range(len(nums)):
-            for j in range(len(nums)):
-                if i < j and nums[i] == nums[j]:
-                    counter+=1
-                    
+class Solution:
     
-        return counter
-
-
-
-                    
-           
+    # search for duplicate numbers
+    def numIdenticalPairs(self, nums: List[int]) -> int:
         
+        # number of good pairs
+        # we can use combination formula for finding the solution
+        num = 0
+        repeat = {}
+        for i in nums:
+            if i in repeat:
+                if repeat[i] == 1:
+                    num+=1
+                else:
+                    num+=repeat[i]
+                repeat[i] += 1
+            else:
+                repeat[i] = 1
+                
+        return num
+                
+                
+                
+        
+                 
+                
+            
