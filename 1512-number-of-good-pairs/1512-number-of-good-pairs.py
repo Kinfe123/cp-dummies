@@ -6,18 +6,23 @@ class Solution:
         # number of good pairs
         # we can use combination formula for finding the solution
         num = 0
-        repeat = {}
-        for i in nums:
-            if i in repeat:
-                if repeat[i] == 1:
-                    num+=1
-                else:
-                    num+=repeat[i]
-                repeat[i] += 1
+        dict_ = {}
+        summed = 0
+        for i in range(len(nums)):
+            if nums[i] in dict_:
+                dict_[nums[i]]+=1
             else:
-                repeat[i] = 1
+                dict_[nums[i]] = 1
                 
-        return num
+        for keys , values in dict_.items():
+            if values > 1:
+                summed+= (0.5*values) * (values-1)
+        return int(summed)
+        
+        
+            
+                
+        print(dict_)
                 
                 
                 
