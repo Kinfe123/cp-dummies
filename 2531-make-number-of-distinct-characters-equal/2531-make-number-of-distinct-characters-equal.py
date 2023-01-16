@@ -9,7 +9,9 @@ class Solution:
                 newCounter = counter1 - Counter({char1: 1}) + Counter({char2:1})
                 
                 newCounter2 =  counter2 + Counter({char1: 1}) - Counter({char2:1})
-                
+                #this is the actual simulation of swapping removing the char from 
+                #it counter and adding to the another one for making it easier to 
+                #to compare with
                 if len(newCounter) == len(newCounter2):
                     return True 
         return False
