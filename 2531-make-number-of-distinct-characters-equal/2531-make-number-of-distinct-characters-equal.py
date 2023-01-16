@@ -1,16 +1,21 @@
 class Solution:
     def isItPossible(self, word1: str, word2: str) -> bool:
-        
-        a,b = Counter(word1),Counter(word2) 
-        c,d = a.copy(),b.copy()
-        for i in a: 
-            for j in b: 
-                c[i], c[j], d[j], d[i] = c[i]-1, c[j]+1, d[j]-1, d[i]+1
-                if not c[i]: del c[i] 
-                if not d[j]: del d[j] 
-                if len(c)==len(d): return True #after swap 
-                c,d = a.copy(),b.copy() 
+        counter1 = Counter(word1)
+        counter2 = Counter(word2)
+        for char1 in counter1:
+            for char2 in counter2:
+                
+                
+                newCounter = counter1 - Counter({char1: 1}) + Counter({char2:1})
+                
+                newCounter2 =  counter2 + Counter({char1: 1}) - Counter({char2:1})
+                
+                if len(newCounter) == len(newCounter2):
+                    return True 
         return False
+            
+        
+       
 #         setA = set()
 #         setB = set()
 #         map_1 = Counter(word1)
