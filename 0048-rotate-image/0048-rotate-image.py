@@ -7,7 +7,7 @@ class Solution:
         
         """
         n = len(matrix)
-        lists = [[0] * n for _ in range(n)]
+        
         lists1 = []
         start = 0
         
@@ -23,13 +23,7 @@ class Solution:
         return matrix
                 
                 
-                #matrix[i][j] = matrix[j][n-i-1]
-               
-                
-                
-                
-                
-        print(lists)
+              
                                 
                                 
                 
