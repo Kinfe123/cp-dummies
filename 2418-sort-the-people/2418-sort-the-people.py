@@ -1,17 +1,14 @@
 class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
-        
-        
+        dic_ = {}
         for i in range(len(names)):
+            dic_[heights[i]] = names[i]
             
-            for j in range(len(names)-1):
-                
-                if heights[j] < heights[j+1]:
-                    
-                    names[j] , names[j+1] = names[j+1] , names[j]
-                    heights[j] , heights[j+1] = heights[j+1] , heights[j]
+        dic_ = dict(sorted(dic_.items() , reverse=True))
+        result = list(dic_.values())
+        return result
         
-        return names
-
+        
+        
     
         
