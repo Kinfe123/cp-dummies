@@ -1,12 +1,14 @@
 class Solution:
     def maxCoins(self, piles: List[int]) -> int:
+        
+        max_ = 0
         piles.sort()
-        l , r = 0 , len(piles)-1
-        counter = 0
-        while r>=l:
-            r-=1
-            counter+=piles[r]
-            r-=1
-            l+=1
-        return counter
-            
+        next_max= [0] * (len(piles)//3)
+        ind = len(piles)-2
+        j = 0
+        while j < len(next_max):
+            next_max[j] = piles[ind]
+            ind-=2
+            j+=1
+        return sum(next_max)
+        
