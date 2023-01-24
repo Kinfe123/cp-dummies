@@ -1,23 +1,15 @@
 class Solution:
-    def moveZeroes(self, arr: List[int]) -> None:
+    def moveZeroes(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
-        # counter = arr.count(0)
-        # for i in range(counter):
-        #     arr.remove(0)
-        # for i in range(counter):
-        #     arr.append(0)
-        # return arr
-        #track for the zeros to swap 
-        finderForSwap = 0
-        for nonZeroFinder in range(len(arr)):
-            if arr[nonZeroFinder] != 0 and arr[finderForSwap] == 0:
-                arr[nonZeroFinder] , arr[finderForSwap] = arr[finderForSwap] , arr[nonZeroFinder]
+        zeroFinder = 0
+        # nonZeroFinder = 0
+        for nonZeroFinder in range(len(nums)):
+            if nums[zeroFinder] == 0 and nums[nonZeroFinder] != 0:
+                nums[zeroFinder] , nums[nonZeroFinder] = nums[nonZeroFinder] , nums[zeroFinder]
+            if nums[zeroFinder] != 0:
+                zeroFinder+=1
+        return nums
                 
-            if arr[finderForSwap] != 0:
-                finderForSwap+=1
-        return arr
-                
-            
-            
+        
