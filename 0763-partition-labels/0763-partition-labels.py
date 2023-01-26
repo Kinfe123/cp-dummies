@@ -1,20 +1,14 @@
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
-        dic = {}
+        dic_ = {}
         for i in range(len(s)):
-            dic[s[i]] = i
-            if dic[s[i]] == s[i]:
-                dic[s[i]] = i
-        end , res , size = 0 , [] , 0
-        
-        for index , char in enumerate(s):
-            size+=1
-            end = max(end , dic[char])
-            if index == end:
-                res.append(size)
-                size = 0
-                
-        return res
+            dic_[s[i]] = i
+        endPoint , stretched , result = 0 , 0 , []
+        for index , character in enumerate(s):
+            stretched+=1
+            endPoint = max(endPoint , dic_[character])
             
-            
-            
+            if index == endPoint:
+                result.append(stretched)
+                stretched=0
+        return result 
