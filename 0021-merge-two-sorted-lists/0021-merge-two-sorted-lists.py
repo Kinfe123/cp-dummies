@@ -16,14 +16,16 @@ class Solution:
                 
             else:
                 current.next = list2
-            
+                
                 list2 = list2.next
                 current = current.next
-                
+            print(f'Current: {current}')
+            print(f'Dummy: {dummy}')
         if list1:
             current.next = list1
         if list2:
             current.next = list2
+        print(current)
         return dummy.next
         
             
