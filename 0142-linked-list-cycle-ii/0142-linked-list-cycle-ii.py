@@ -11,7 +11,7 @@ class Solution:
         temp = head 
         while temp:
             if temp in set_h:
-                return lists[lists.index(temp)]
+                return temp
             else:
                 
                 set_h.add(temp)
