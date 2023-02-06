@@ -7,14 +7,12 @@ class Solution:
     def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
         stack = []
         temp = head
-        comp = []
+        
         while temp:
-            comp.append(temp.val)
-            temp = temp.next
-        for i in comp:
-            while stack and stack[-1] < i:
+            while stack and stack[-1] < temp.val:
                 stack.pop()
-            stack.append(i)
+            stack.append(temp.val)
+            temp = temp.next
         dummy = curr =  ListNode()
         
         for i in stack:
@@ -23,6 +21,4 @@ class Solution:
         curr.next = None
         return dummy.next
         
-        
-            
         
