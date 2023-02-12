@@ -5,14 +5,7 @@
 #         self.next = next
 class Solution:
     def nodesBetweenCriticalPoints(self, head: Optional[ListNode]) -> List[int]:
-        lenght = 0
-        temp = head
-        result = []
-        # while temp:
-        #     temp = temp.next
-        #     lenght+=1
-        # if lenght < 3:
-        #     return [-1 , -1]
+        
         temp2 = head
         map_ = {}
         prev_curr , curr , next_curr = temp2 , temp2.next , temp2.next.next
