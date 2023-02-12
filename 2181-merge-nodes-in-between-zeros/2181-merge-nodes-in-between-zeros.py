@@ -8,30 +8,23 @@ class Solution:
         temp = head 
         temp = temp.next
         summed = 0
-        dummy = curr = ListNode()
-        start = head
+        seeker = head 
+        
+        '''
+        I'm just overwriting the value of the head nodes with the sum that i have found so far and after we have exhausted finding zero , we will be making our seeker next to be None 
+        
+        '''
         while temp:
-            while temp.val != 0:
-                summed+=temp.val
-                prev = temp
-                temp = temp.next
-            curr.next = ListNode(summed)
-            curr = curr.next
+            if temp.val == 0:
+                seeker = seeker.next
+                #This is due to the zero issue 
+                seeker.val = summed
+                summed = 0
+            else:
+                summed += temp.val 
             temp = temp.next
-            
-            summed = 0
-            
-            
+        seeker.next = None
         
-                
-        return dummy.next 
-       
-#         dummy = curr = ListNode()
-#         for i in range(len(result)):
-#             curr.next = ListNode(result[i])
-#             curr = curr.next
-#         curr.next = None
-#         return dummy.next
-        
+        #Again due to zero issue 
+        return head.next 
     
-        
