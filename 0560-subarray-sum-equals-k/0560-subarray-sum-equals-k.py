@@ -1,18 +1,18 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        count = 0
         map_ = {}
-        curr_sum = 0
+        curr = 0
+        count = 0
         for i in range(len(nums)):
-            curr_sum += nums[i]
-            if curr_sum == k:
+            curr += nums[i]
+            if curr == k:
                 count+=1
-            if curr_sum - k in map_:
-                count+=map_[curr_sum-k]
-            if curr_sum in map_:
-                map_[curr_sum] += 1
+            if curr - k in map_:
+                count+=map_[curr - k]
+            if curr in map_:
+                map_[curr] += 1
             else:
-                map_[curr_sum] = 1
-        return count 
+                map_[curr] = 1
+        return count
                 
-            
+        
