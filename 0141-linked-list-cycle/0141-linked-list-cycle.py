@@ -2,22 +2,15 @@
 # class ListNode:
 #     def __init__(self, x):
 #         self.val = x
-#         self.next = None # will be a type of ListNode
+#         self.next = None
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        set_h = set()
-        temp = head 
-        while temp:
-            if temp in set_h:
-                return True 
-            else:
-                
-                set_h.add(temp)
-            temp = temp.next
+        sets = set()
+        while head:
+            if head in sets:
+                return True
+            sets.add(head)
+            head = head.next
         return False
-        
-           
-      
-      
         
