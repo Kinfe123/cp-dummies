@@ -9,23 +9,20 @@ class Solution:
         if not head:
             return None
         
-        map_ = {}
+        
+            
+        slow = head
+        fast = head
+        isCycled = False
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if slow == fast:
+                isCycled = True 
+                break
         temp = head 
-        count = 0
-        while temp:
-            if temp in map_:
-                return temp 
-            
-            map_[temp] = count 
+        
+        while temp != slow and slow.next:
             temp = temp.next
-            count+=1
-        return None
-            
-        # slow = head
-        # fast = head.next
-        # while fast and fast.next:
-        #     if slow == fast.next:
-        #         return slow
-        #     fast = fast.next.next
-        #     slow = slow.next
-        # return None
+            slow = slow.next
+        return slow if isCycled else None
