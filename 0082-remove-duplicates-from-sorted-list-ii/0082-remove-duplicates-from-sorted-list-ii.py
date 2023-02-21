@@ -4,36 +4,31 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    # def deleteElements(self  , lists):
+        
+        
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        temp = head
-        element_ = set()
-        while temp and temp.next:
-            curr = temp.next
-            
-            while curr and curr.val == temp.val:
-                element_.add(curr.val)
-                curr = curr.next
-            
-            temp.next = curr
-            temp = temp.next
-       
-        dummy = curr = ListNode(0)
+        dummy = curr = ListNode()
         dummy.next = head
-      
-    
-        while curr and curr.next:
-            if curr.next.val in element_:
-            
-                curr.next = curr.next.next
-                curr = curr
+        while head:
+            if head.next and head.val == head.next.val:
+                while head and head.next and head.val == head.next.val:
+                    head = head.next
+                   
+                head = head.next
+                curr.next = head
             else:
                 curr = curr.next
+                
+                head = head.next
         return dummy.next
+                
+
         
             
-            
-                
-                
-                
         
         
+    
+                
+    
+    
