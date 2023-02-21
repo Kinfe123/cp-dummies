@@ -5,18 +5,21 @@
 #         self.next = next
 class Solution:
     def nextLargerNodes(self, head: Optional[ListNode]) -> List[int]:
+        stack = []
+        dummy = curr =ListNode()
+        collector = []
         
-        stack , result = [] , []
         while head:
             while stack and stack[-1][1] < head.val:
-                result[stack.pop()[0]] = head.val
-            stack.append([len(result)  , head.val])
-            result.append(0)
+                indx_ = stack.pop()[0]
+                collector[indx_] = head.val
+                
+            stack.append([len(collector) , head.val])
+            collector.append(0)
             head = head.next
-        return result
-        
-        
-        
+                
+        return collector
+    
         
             
         
