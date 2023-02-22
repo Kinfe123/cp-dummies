@@ -10,11 +10,14 @@ class Solution:
             k-=1
         return nodes
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        
+        
         dummy = ListNode()
         dummy.next = head
         prevOnes = dummy
         #NOw dummy and previous one is pointing to the same head 
-    
+        
+        
         #Start catching the end of the group and reversing the group 
         while True:
             endOfGroup = self.getTheKth(prevOnes , k)
