@@ -19,6 +19,7 @@ class Solution:
         while True:
             endOfGroup = self.getTheKth(prevOnes , k)
             if not endOfGroup:
+                
                 break
             nextOnes = endOfGroup.next
             current , previous = prevOnes.next , endOfGroup.next
