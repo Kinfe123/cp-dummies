@@ -1,19 +1,19 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        counter = Counter(p)
         l = 0
-        r = len(p)-1
         result = []
-        while r < len(s):
-            subs = Counter(s[l:r+1])
-            if subs == counter:
-                result.append(l)
+        running_dict = defaultdict(int)
+        # r = len(p)-1
+        for r in range(len(s)):
+            running_dict[s[r]] += 1
             
-            subs[s[l]] -= 1
-            if subs[s[l]] == 0:
-                subs.pop(s[l])
-            l+=1
-            r+=1
+            if r - l + 1 == len(p):
+                
+                if running_dict == Counter(p):
+                    result.append(l)
+                running_dict[s[l]]-=1
+                if running_dict[s[l]] == 0:
+                    del running_dict[s[l]]
+                l+=1
         return result
                 
-            
