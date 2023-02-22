@@ -4,28 +4,48 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    def rev(self , lists):
+        prev , curr = None  , lists
+        while curr:
+            saver = curr.next
+            curr.next = prev
+            prev = curr
+            curr = saver
+     
+        
+        return prev
+    def add_(self , list1 ,list2):
+        list1_n = []
+        list2_n = []
+        while list1:
+            list1_n.append(list1.val)
+            list1 = list1.next
+        while list2:
+            list2_n.append(list2.val)
+            list2 = list2.next
+        converted = "".join([str(i) for i in list1_n])
+        converted_ = "".join([str(i) for i in list2_n])
+        return int(converted)+int(converted_)
+    
+    
+        
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        list1 = []
-        list2 = []
-        temp1 = l1
-        temp2 = l2
-        while temp1:
-            list1.append(str(temp1.val))
-            temp1 = temp1.next
-        while temp2:
-            list2.append(str(temp2.val))
-            temp2 = temp2.next
-        list1.reverse()
-        list2.reverse()
-        list1 = int("".join(list1))
-        list2 = int("".join(list2))
-        summed = list1 + list2
-        summed = str(summed)
-        summed = [int(x) for x in summed]
-        summed.reverse()
-        lenght = len(summed)
-        dummy =curr = ListNode()
-        for i in range(0 , lenght):
-            curr.next = ListNode(summed[i])
+        list1  = self.rev(l1)
+        list2 = self.rev(l2)
+        result = (self.add_(list1 , list2))
+        result = list(str(result))
+        result.reverse()
+        
+        
+        dummy = curr = ListNode(0)
+        for i in range(len(result)):
+            curr.next = ListNode(int(result[i]))
             curr = curr.next
+        curr.next = None
         return dummy.next
+        
+        
+        
+        
+        
+        
