@@ -1,41 +1,53 @@
 class MyCircularQueue:
 
     def __init__(self, k: int):
-        #three lists two stacks and one arr
-        self.list = [-1]*k
-        self.length = 0
-        self.ptr = 0
+        self.data = [-1] * k
+        self.k = k
         self.size = 0
+        self.front = 0
+        self.back = 0
+        
+
     def enQueue(self, value: int) -> bool:
         if self.isFull():
             return False
-        self.list[self.length] = value
-        # print(self.list, self.length)
-        self.length = (self.length + 1) % len(self.list)
-        self.size += 1
+        self.data[self.front] = value
+        self.front +=1
+        self.front %= self.k
+        self.size+=1
         return True
+        
+        
+
     def deQueue(self) -> bool:
         if self.isEmpty():
             return False
-        self.list[self.ptr] = -1
-        self.ptr = (self.ptr + 1) % len(self.list)
-        # print(self.list)
+        self.data[self.back] = -1
+        self.back+=1
+        self.back %= self.k
         self.size -= 1
+        
         return True
         
 
     def Front(self) -> int:
-        return self.list[self.ptr] 
-    
+        return self.data[self.back]
+        
+
     def Rear(self) -> int:
-        # print(self.length)
-        return self.list[self.length - 1]
+        #since we shift one for making the another enqueing then , we have
+        #to trace back to the one behind to return the value 
+        return self.data[self.front-1]
+        
 
     def isEmpty(self) -> bool:
-        return not self.size
+        return self.size == 0
+        
 
     def isFull(self) -> bool:
-        return self.size == len(self.list)
+        return self.k == self.size
+        
+
 
 # Your MyCircularQueue object will be instantiated and called as such:
 # obj = MyCircularQueue(k)
