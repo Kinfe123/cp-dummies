@@ -1,16 +1,22 @@
 class Solution:
     def maxScore(self, cardPoints: List[int], k: int) -> int:
-        left , right = 0 , len(cardPoints)-k
-        summed = sum(cardPoints[right:])
-        result = summed
-        while right < len(cardPoints):
-            summed += (cardPoints[left] - cardPoints[right])
-            #Removing the right one and adding the left one 
-            result = max(result , summed)
-            left+=1
-            right+=1
+        #the sliding window technique will be used for solving this problem
+        #with the size of n - k
+        n = len(cardPoints)
+        l , r = 0 , n-k
+        summed = sum(cardPoints[r:])
+        max_result = summed 
+        while r < n:
+            summed-=cardPoints[r]
+            summed+=cardPoints[l]
+            max_result = max(max_result , summed)
+            l+=1
+            r+=1
+        return max_result 
+    
+                
+            
+            
+            
         
-            
-        return result
-            
-            
+        
