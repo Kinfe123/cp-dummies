@@ -3,11 +3,12 @@ class Solution:
     
             
     def passThePillow(self, n: int, time: int) -> int:
-        direction_change = -1
-        pos = 0
-        while time:
-            if pos == n - 1 or pos == 0:
-                direction_change*=-1
-            pos+=direction_change
-            time-=1
-        return pos+1
+        position = 1
+        for i in range(time):
+            if position == 1:
+                change_dxn = 1
+            elif position == n:
+                change_dxn = -1
+            print(position)
+            position+=change_dxn
+        return position
