@@ -1,26 +1,25 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        result , current = []  , []
-        def backtrack(index):
-            if len(current) == len(nums): 
-                result.append(current[:])
-                return 
-            for i in range(len(nums)):
-                current.append(nums[i])
-                backtrack(i+1)
-                current.pop()
-                
-        backtrack(0)
+        result = []
+     
+        def backtrackish(nums, path=[]):
+            
         
-        post = []
-        visited = set()
-        for i in result:
-            
-            
-            if len(set(i)) == len(nums):
-                post.append(i)
-           
+            if not nums: 
+                result.append(path) 
+                #till we have left with no elements left  
+
+            for i in range(len(nums)): 
+       
                 
-        return post
-        # return result 
+               
+                backtrackish(nums[:i] + nums[i+1:], path+[nums[i]]) 
+                
+                
+       
+        
+        backtrackish(nums , path=[])
+        return result
+                
+            
         
