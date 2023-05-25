@@ -10,6 +10,7 @@ class Solution:
                 min_+=1
                 end = end_
             else:
+                #the edge case that got have to handle - which one might engulf the other two that aint overlaps
                 end = min(end , end_)
                 
                 
