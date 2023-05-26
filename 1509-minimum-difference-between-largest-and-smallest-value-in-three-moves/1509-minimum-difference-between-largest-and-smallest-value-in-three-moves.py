@@ -5,7 +5,7 @@ class Solution:
         if lenght <= 4:
             return 0
         
-        return min(nums[-4]-nums[0] , nums[-1] - nums[3] , nums[-2] - nums[2] , nums[-3] -nums[1])
+        return min(b - a for a, b in zip(nums[:4], nums[-4:]))
 #         first_max , first_min , second_max ,second_min = float('-inf'), float('inf') , float('-inf'), float('inf')
 #         for i in range(3 , len(nums)):
         
