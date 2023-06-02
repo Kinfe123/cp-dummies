@@ -6,14 +6,14 @@ class Solution:
             return nums[0]
             
         # nums.extend(nums)
-        def dp(curr  , dest):
+        def dp(curr):
             # curr = curr % len(nums)
             nonlocal max_
             nonlocal cached_
            
             # max_ = max(max_ , sum_)
            
-            if curr > dest:
+            if curr < 0:
                 
                 return 0
             if curr in cached_:
@@ -26,17 +26,17 @@ class Solution:
             else:
                 if curr not in cached_:
                 
-                    cached_[curr] = max(dp(curr + 1 , dest)  , dp(curr + 2 , dest)+nums[curr])
+                    cached_[curr] = max(dp(curr - 1 )  , dp(curr - 2 )+nums[curr])
                     
                 return cached_[curr]
             
             
                 # cached_[curr] = max_
                 
-        op1 = dp(0 , len(nums)-2)
+        op1 = dp(len(nums)-2)
         cached_ = defaultdict(int)
         nums.pop(0)
-        op2 = dp(0 , len(nums)-1)
+        op2 = dp(len(nums)-1)
         
         return max(op1 , op2)
         # return max_
