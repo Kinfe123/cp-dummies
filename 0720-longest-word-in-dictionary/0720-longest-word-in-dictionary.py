@@ -25,10 +25,19 @@ class Trie:
         count =0
         for i in range(len(word)):
             if word[i] not in curr.children:
-                return False , count
+                return False 
             curr = curr.children[word[i]]
             count +=1
-        return True, count
+        return True
+    def pr(self , word):
+        curr = self.root
+        init = True
+        for c in word:
+            curr = curr.children[c]
+            init = init and curr.is_end
+            if not init:
+                return False
+        return True
     
         
 
@@ -37,24 +46,22 @@ class Solution:
         words.sort()
         trie = Trie()
         res =[]
+        best = ''
         for i in range(len(words)):
             curr = words[i]
             trie.insert(curr)
-        
-        map_ = defaultdict(int)
-        best = ''
-        max_l = float('-inf')
         for i in range(len(words)):
             curr = words[i]
-            if len(curr) == 1 or curr[:len(curr)-1] in map_:
-                map_[curr] = 1
-                if len(curr) > len(best):
-                    best = curr
-                else:
-                    continue
-                res.append(curr)
+            #Each of the word should have an end by them selves
+            init = True
+        
+            # if
             
+            # print('Curr , ' , curr , init)     
+            if trie.pr(curr) and (len(curr) > len(best) or (len(curr) == len(best) and curr < best)):
+                best = curr
         return best
+       
             
     
         
