@@ -1,7 +1,9 @@
-class Solution:
-    def repeatedStringMatch(self, A: str, B: str) -> int:
-        times = -(-len(B) // len(A)) # Equal to ceil(len(b) / len(a))
-        for i in range(2):
-            if B in (A * (times + i)):
-                return times + i
-        return -1
+class Solution {
+public:
+    int repeatedStringMatch(string a, string b) {
+        string as = a;
+        for (int rep = 1; rep <= b.length() / a.length() + 2; rep++, as += a)
+            if (as.find(b) != string::npos) return rep;
+        return -1;
+    }
+};
