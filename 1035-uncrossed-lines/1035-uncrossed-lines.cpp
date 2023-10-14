@@ -14,9 +14,10 @@ public:
     int maxUncrossedLines(vector<int>& text1, vector<int>& text2) {
         int n = text1.size();
         int m = text2.size();
-        int dp[n+1][m+1];
+        // int dp[n+1][m+1];
+        vector<vector<int>> dp(n+1 , vector<int>(m+1 , 0));
         int res = 0;
-        memset(dp, 0, sizeof(dp));
+        // memset(dp, 0, sizeof(dp));
         for(int i =1; i<=n; i++){
             for(int j = 1; j <= m; j++){
                 if(text1[i-1] == text2[j-1]){
