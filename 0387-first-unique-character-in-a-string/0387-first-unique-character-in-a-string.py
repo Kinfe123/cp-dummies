@@ -3,7 +3,7 @@ class Solution:
         c = Counter(s)
         res = -1
         for i in range(len(s)):
-            if c[s[i]] == 1:
+            if s[i] not in s[i+1:] and s[i] not in s[:i]:
                 res = i
                 break
         return res
