@@ -13,6 +13,7 @@ class Solution:
                 stack.pop()
                 # k = 0
                 p = 0
+                
                 summed = 0
                 while stack and stack[-1].isdigit():
                     curr = stack.pop()
