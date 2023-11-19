@@ -8,10 +8,8 @@ class Solution:
                 curr_string = ''
                 while stack[-1] != '[':
                     curr_string = stack.pop() + curr_string
-                #remove [
-                
+        
                 stack.pop()
-                # k = 0
                 p = 0
                 
                 summed = 0
